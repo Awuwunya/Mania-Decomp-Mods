@@ -16,6 +16,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 # build options
+set(GAME_DIR ${CMAKE_SOURCE_DIR}/game)
 
 # include dirs
 include_directories(${CMAKE_SOURCE_DIR}/src)
@@ -31,12 +32,18 @@ add_compile_definitions(
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "")
 
+# call this function to automatically add a new mod
+function(addmod)
+	set_target_properties(${ARGV0} PROPERTIES PREFIX "")
+	configure_file(${CMAKE_SOURCE_DIR}/src/${ARGV0}/mod.ini ${GAME_DIR}/mods/${ARGV0}/mod.ini COPYONLY)
+	configure_file(${CMAKE_BINARY_DIR}/${ARGV0}.dll ${GAME_DIR}/mods/${ARGV0}/${ARGV0}.dll COPYONLY)
+endfunction()
+
+# make test mod
 add_library(testmod SHARED
 	"extern/GameAPI/CPP/GameAPI/Game.cpp"
 
 	"src/testmod/main.cpp"
 )
 
-set_target_properties(testmod PROPERTIES PREFIX "")
-configure_file(${CMAKE_SOURCE_DIR}/src/testmod/mod.ini ${CMAKE_BINARY_DIR}/mods/testmod/mod.ini COPYONLY)
-configure_file(${CMAKE_BINARY_DIR}/testmod.dll ${CMAKE_BINARY_DIR}/mods/testmod/testmod.dll COPYONLY)
+addmod(testmod)
