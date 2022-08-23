@@ -35,8 +35,14 @@ set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "")
 # call this function to automatically add a new mod
 function(addmod)
 	set_target_properties(${ARGV0} PROPERTIES PREFIX "")
-	configure_file(${CMAKE_SOURCE_DIR}/src/${ARGV0}/mod.ini ${GAME_DIR}/mods/${ARGV0}/mod.ini COPYONLY)
-	configure_file(${CMAKE_BINARY_DIR}/${ARGV0}.dll ${GAME_DIR}/mods/${ARGV0}/${ARGV0}.dll COPYONLY)
+
+	if(EXISTS ${CMAKE_SOURCE_DIR}/src/${ARGV0}/mod.ini)
+		configure_file(${CMAKE_SOURCE_DIR}/src/${ARGV0}/mod.ini ${GAME_DIR}/mods/${ARGV0}/mod.ini COPYONLY)
+	endif()
+
+	if(EXISTS ${CMAKE_BINARY_DIR}/${ARGV0}.dll)
+		configure_file(${CMAKE_BINARY_DIR}/${ARGV0}.dll ${GAME_DIR}/mods/${ARGV0}/${ARGV0}.dll COPYONLY)
+	endif()
 endfunction()
 
 # make test mod
