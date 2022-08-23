@@ -1,0 +1,37 @@
+Attempting to load user file: Achievements.bin
+Nope!
+File not found: Data.rsdk
+File not found: Data/Game/GameConfig.bin
+File not found: Data/Objects/Static/420701D3A57A564031790EE4228C7BDE.bin
+File not found: Data/Objects/Static/AD8ECA1EB8CDCB6CEAA5CE2E361EF48E.bin
+File not found: Data/Objects/Static/38021520621EDBEBB1E1B2FE4423535F.bin
+File not found: Data/Objects/Static/B5238FBBD2653E8506337C21FACF1A88.bin
+File not found: Data/Game/GameConfig.bin
+Attempting to save user file: Achievements.bin
+Attempting to load user file: Achievements.bin
+File not found: Data.rsdk
+File not found: Data/Game/GameConfig.bin
+File not found: Data/Objects/Static/420701D3A57A564031790EE4228C7BDE.bin
+File not found: Data/Objects/Static/AD8ECA1EB8CDCB6CEAA5CE2E361EF48E.bin
+File not found: Data/Objects/Static/38021520621EDBEBB1E1B2FE4423535F.bin
+File not found: Data/Objects/Static/B5238FBBD2653E8506337C21FACF1A88.bin
+File not found: Data/Game/GameConfig.bin
+Attempting to save user file: Achievements.bin
+Attempting to load user file: Achievements.bin
+File not found: Data.rsdk
+File not found: Data/Game/GameConfig.bin
+File not found: Data/Objects/Static/420701D3A57A564031790EE4228C7BDE.bin
+File not found: Data/Objects/Static/AD8ECA1EB8CDCB6CEAA5CE2E361EF48E.bin
+File not found: Data/Objects/Static/38021520621EDBEBB1E1B2FE4423535F.bin
+File not found: Data/Objects/Static/B5238FBBD2653E8506337C21FACF1A88.bin
+File not found: Data/Game/GameConfig.bin
+Attempting to save user file: Achievements.bin
+Attempting to load user file: Achievements.bin
+File not found: Data.rsdk
+File not found: Data/Game/GameConfig.bin
+File not found: Data/Objects/Static/420701D3A57A564031790EE4228C7BDE.bin
+File not found: Data/Objects/Static/AD8ECA1EB8CDCB6CEAA5CE2E361EF48E.bin
+File not found: Data/Objects/Static/38021520621EDBEBB1E1B2FE4423535F.bin
+File not found: Data/Objects/Static/B5238FBBD2653E8506337C21FACF1A88.bin
+File not found: Data/Game/GameConfig.bin
+Attempting to save user file: Achievements.bin
