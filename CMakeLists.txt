@@ -16,12 +16,13 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
 # build options
-set(GAME_DIR ${CMAKE_SOURCE_DIR}/game)
+set(GAME_DIR ${CMAKE_SOURCE_DIR}/game CACHE STRING "GAME_DIR")
 
 # include dirs
 include_directories(${CMAKE_SOURCE_DIR}/src)
 include_directories(${CMAKE_SOURCE_DIR}/extern/GameAPI/CPP/GameAPI)
 include_directories(${CMAKE_SOURCE_DIR}/extern/GameAPI/CPP/GameAPI/RSDKv5)
+include_directories(${CMAKE_SOURCE_DIR}/extern/Mania)
 
 # Add `DEBUG` macro definition if compiling under Debug or RelWithDebInfo
 # configuration
@@ -32,24 +33,25 @@ add_compile_definitions(
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "")
 
-# call this function to automatically add a new mod
-function(addmod)
-	set_target_properties(${ARGV0} PROPERTIES PREFIX "")
+# generate custom command for the specific mod
+function(genmod mod)
+	set_target_properties(${mod} PROPERTIES PREFIX "")
 
-	if(EXISTS ${CMAKE_SOURCE_DIR}/src/${ARGV0}/mod.ini)
-		configure_file(${CMAKE_SOURCE_DIR}/src/${ARGV0}/mod.ini ${GAME_DIR}/mods/${ARGV0}/mod.ini COPYONLY)
-	endif()
-
-	if(EXISTS ${CMAKE_BINARY_DIR}/${ARGV0}.dll)
-		configure_file(${CMAKE_BINARY_DIR}/${ARGV0}.dll ${GAME_DIR}/mods/${ARGV0}/${ARGV0}.dll COPYONLY)
-	endif()
+	add_custom_command(TARGET ${mod} POST_BUILD
+		COMMAND ${CMAKE_COMMAND}
+		-DTARGET_NAME=${mod}
+		-DTARGET_PATH=${CMAKE_CURRENT_SOURCE_DIR}
+		-DGAME_DIR:STRING=${GAME_DIR}
+		-DINI_DIR:STRING=${CMAKE_SOURCE_DIR}
+		-P ${CMAKE_SOURCE_DIR}/addmod.cmake
+	)
 endfunction()
 
 # make test mod
-add_library(testmod SHARED
+add_library(extraplayers SHARED
 	"extern/GameAPI/CPP/GameAPI/Game.cpp"
 
-	"src/testmod/main.cpp"
+	"src/extraplayers/main.cpp"
 )
 
-addmod(testmod)
+genmod(extraplayers)
